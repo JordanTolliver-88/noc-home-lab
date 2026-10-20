@@ -2,6 +2,9 @@
 
 A segmented, monitored network built on a Cisco Catalyst 2960 and Ubuntu, run like a NOC shift: VLANs, monitoring, alerting, and documented incident drills. Built alongside CompTIA Network+ (N10-009) study.
 
+## Topology
+![Lab topology](diagrams/topology.drawio.png)
+
 ## Status
 - [x] Phase 1: Baseline and harden the switch
 - [ ] Phase 2: Segment the network
