@@ -64,5 +64,8 @@ The Ubuntu desktop's onboard NIC (`enp1s0`) connects to the home network (`10.0.
 - Configs: [chrony](configs/rpi4/chrony-lab.conf), [rsyslog](configs/ubuntu/10-lab-network.conf), [logrotate](configs/ubuntu/logrotate-lab-network)
 - Proof: [show ntp associations](docs/phase3/show-ntp-associations.txt), [sample switch syslog](docs/phase3/sample-switch-syslog.txt), and the switch config history in this repo's commits
 
+## Incident log
+See [shift-log.md](shift-log.md) for incidents worked during the build.
+
 ## Skills demonstrated
 Cisco IOS switching (VLANs, 802.1Q trunking, STP, port security hardening) · Linux networking (netplan, nftables, IP forwarding, NAT) · DHCP, DNS, NTP, syslog, TFTP · SSH key management · Bash scripting and cron · Git-based configuration management · Structured troubleshooting
