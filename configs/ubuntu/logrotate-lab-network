@@ -1,0 +1,10 @@
+/var/log/network/*.log {
+    weekly
+    rotate 8
+    compress
+    missingok
+    notifempty
+    postrotate
+        /usr/lib/rsyslog/rsyslog-rotate
+    endscript
+}
