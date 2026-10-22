@@ -1,0 +1,22 @@
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    enx6c6e0755838c:
+      dhcp4: false
+      dhcp6: false
+      optional: true
+  vlans:
+    vlan10:
+      id: 10
+      link: enx6c6e0755838c
+      addresses: [10.10.10.1/24]
+    vlan20:
+      id: 20
+      link: enx6c6e0755838c
+      addresses: [10.10.20.1/24]
+    vlan30:
+      id: 30
+      link: enx6c6e0755838c
+      addresses: [10.10.30.1/24]
+
