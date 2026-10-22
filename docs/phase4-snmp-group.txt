@@ -1,0 +1,5 @@
+ Authorized access only. Activity is logged. 
+groupname: NOCRO                            security model:v3 priv 
+readview : v1default                        writeview: <no writeview specified>        
+notifyview: <no notifyview specified>       
+row status: active	access-list: 10
