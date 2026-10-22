@@ -120,6 +120,31 @@ Severity: **SEV-1** whole lab down · **SEV-2** a service or segment down · **S
 
 ---
 
+## INC-006 · Pi not answering SNMPv3
+**Date:** 2026-10-22, ~17:56–18:41 · **Severity:** SEV-3 · **Layer:** 4/7
+
+**Symptom:** `snmpget` to the switch (10.10.10.2) worked, but the same query to the Pi (10.10.20.10) returned `Timeout`.
+
+**Investigation:**
+- The first round of snmpd setup had been run at the Ubuntu prompt instead of the Pi. Removed snmpd from Ubuntu and redid it on the Pi.
+- `systemctl status snmpd`: running. `ss -ulpn | grep 161`: listening on `127.0.0.1:161` and `[::1]:161` only.
+- `sudo grep` on `/etc/snmp/snmpd.conf` showed the untouched Debian default: `agentaddress 127.0.0.1,[::1]` plus v2c `public` communities.
+- After fixing the listener, the error changed to `Unknown user name`: the agent answered, but no `librenms` user was loaded. The user file held an old entry with unknown passwords, a line with placeholder text, and a `createUser` command that failed on a missing quote.
+- After recreating the user, the error changed to `Authentication failure`: the user existed, but the auth password didn't match what the client sent.
+
+**Root cause:** Two problems stacked. snmpd's default config listens on localhost only, and the SNMPv3 user was created with the wrong or mistyped credentials.
+
+**Fix:** Replaced `snmpd.conf` with a minimal config (`agentaddress udp:161`, `rouser librenms priv`, no v1/v2c communities). Stopped snmpd, deleted every `librenms` entry from `/var/lib/snmp/snmpd.conf`, and recreated the user with the exact passwords already verified against the switch.
+
+**Verification:** `ss` showed `0.0.0.0:161`. `snmpget` over authPriv returned `STRING: "rpi4"`. The `createUser` line was consumed and replaced by a hashed `usmUser` entry.
+
+**Prevention:** Confirm the listening address with `ss` after configuring any service. Verify credentials against a known-working device before copying them to a new one.
+
+**Lesson:** Each new error told me I'd fixed one layer and reached the next. `Timeout` meant nothing was listening, `Unknown user name` meant the agent was reachable but the account was missing, and `Authentication failure` meant the account existed but the password was wrong. Reading the error closely each time told me exactly where to look next.
+
+---
+
 ## Minor issues
 - Several commands were typed at the wrong prompt (IOS commands at the Ubuntu prompt and the reverse). Habit: check the prompt (`SW1#` vs `jordan@...$` vs `jordan@rpi4`) before running anything.
 - Commands pasted together with `ssh` were swallowed while the session connected (the Pi-hole installer and chrony install didn't run). Habit: run session-opening commands alone, then paste the next step.
+- Placeholder values from instructions were typed literally a few times (`AUTHPASS`, `YourAuthPass1`, the Git email). Habit: before pressing Enter, scan the command for words in CAPS or `Your...` and replace them.
