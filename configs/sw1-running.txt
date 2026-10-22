@@ -1,12 +1,10 @@
- Authorized access only. Activity is logged. 
-Building configuration...
 
-Current configuration : 7880 bytes
+!
 !
 version 12.2
 no service pad
-service timestamps debug datetime msec
-service timestamps log datetime msec
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
 service password-encryption
 !
 hostname SW1
@@ -20,6 +18,8 @@ username admin privilege 15 secret 5 <REDACTED>
 !
 !
 no aaa new-model
+clock timezone EST -5
+clock summer-time EDT recurring
 system mtu routing 1500
 !
 !
@@ -31,6 +31,10 @@ ip domain-name lab.local
 !
 !
 !
+archive
+ path tftp://10.10.10.1/sw1-config
+ write-memory
+ time-period 1440
 !
 spanning-tree mode rapid-pvst
 spanning-tree portfast default
@@ -402,8 +406,10 @@ interface Vlan10
 ip default-gateway 10.10.10.1
 no ip http server
 no ip http secure-server
+logging source-interface Vlan10
+logging 10.10.10.1
 no vstack
-banner motd ^C Authorized access only. Activity is logged. ^C
+banner motd  Authorized access only. Activity is logged. 
 !
 line con 0
  exec-timeout 15 0
@@ -418,4 +424,5 @@ line vty 5 15
  login local
  transport input ssh
 !
+ntp server 10.10.20.10
 end
