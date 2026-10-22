@@ -375,7 +375,7 @@ interface FastEthernet0/47
  shutdown
 !
 interface FastEthernet0/48
- description BACKUP-TEST
+ description UNUSED
  switchport access vlan 999
  switchport mode access
  switchport nonegotiate
