@@ -408,6 +408,13 @@ no ip http server
 no ip http secure-server
 logging source-interface Vlan10
 logging 10.10.10.1
+access-list 10 remark SNMP pollers
+access-list 10 permit 10.10.10.1
+access-list 10 deny   any log
+snmp-server group NOCRO v3 priv access 10
+snmp-server location Home lab
+snmp-server contact Jordan Tolliver
+snmp ifmib ifindex persist
 no vstack
 banner motd  Authorized access only. Activity is logged. 
 !
