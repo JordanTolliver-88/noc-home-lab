@@ -144,6 +144,28 @@ Severity: **SEV-1** whole lab down · **SEV-2** a service or segment down · **S
 
 ---
 
+## INC-007 · Monitoring showed every device down
+**Date:** 2026-10-24, ~21:25–22:14 · **Severity:** SEV-3 (monitoring only, no real outage) · **Layer:** 7
+
+**Symptom:** LibreNMS's device-down alert rules were firing for both SW1 and rpi4, and a manual poll ended with `All devices were down, unable to poll`. Availability showed 0%.
+
+**Investigation:**
+- `ping` from Ubuntu to 10.10.10.2 and 10.10.20.10: both answered, 0% loss. The network was healthy.
+- Poll output showed `Hostname: SW1` and `Hostname: rpi4` with a blank `IP:` field.
+- From inside the LibreNMS container: `ping 10.10.10.2` answered, `ping SW1` failed with `Try again`. The name couldn't be resolved.
+
+**Root cause:** The friendly names had been entered into each device's Hostname field instead of Display Name. LibreNMS connects by hostname, and nothing in the lab resolves `SW1` or `rpi4`, so every poll failed and both devices were marked down.
+
+**Fix:** Set each Hostname back to its IP (10.10.10.2, 10.10.20.10) and put `SW1` / `rpi4` in Display Name.
+
+**Verification:** A forced poll showed the IPs, ran the full module set, and the device-down rules returned to OK.
+
+**Prevention:** In monitoring tools, keep the connection field (hostname/IP) separate from the label. Adding local DNS records in Pi-hole would also make names resolvable.
+
+**Lesson:** When monitoring says everything is down but the network tests fine, I should suspect the monitoring system itself first. Testing from inside the container showed it could reach the IP but not the name, which pointed straight at a config change I'd made, not a network problem.
+
+---
+
 ## Minor issues
 - Several commands were typed at the wrong prompt (IOS commands at the Ubuntu prompt and the reverse). Habit: check the prompt (`SW1#` vs `jordan@...$` vs `jordan@rpi4`) before running anything.
 - Commands pasted together with `ssh` were swallowed while the session connected (the Pi-hole installer and chrony install didn't run). Habit: run session-opening commands alone, then paste the next step.
