@@ -1,0 +1,11 @@
+## Switch syslog (SW1) for Oct 26
+2026-10-26T19:01:48.685510-04:00 10.10.10.2 134: .Oct 26 19:01:47.887 EDT: %LINK-5-CHANGED: Interface FastEthernet0/1, changed state to administratively down
+2026-10-26T19:01:48.685909-04:00 10.10.10.2 135: .Oct 26 19:01:48.893 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+2026-10-26T19:01:53.986345-04:00 10.10.10.2 136: .Oct 26 19:01:53.188 EDT: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.10.1)
+2026-10-26T19:20:10.583597-04:00 10.10.10.2 137: .Oct 26 19:20:09.788 EDT: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.10.1)
+2026-10-26T19:24:04.607628-04:00 10.10.10.2 138: .Oct 26 19:24:04.428 EDT: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to up
+2026-10-26T19:24:05.610208-04:00 10.10.10.2 139: .Oct 26 19:24:04.814 EDT: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.10.1)
+2026-10-26T19:24:05.610443-04:00 10.10.10.2 140: .Oct 26 19:24:05.435 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+## DHCP log (dnsmasq) since 18:55
+Oct 26 19:24:04 JORDXN-ThinkCenter dnsmasq-dhcp[204950]: 912908647 DHCPACK(vlan20) 10.10.20.10 98:fe:54:63:e8:85 rpi4
