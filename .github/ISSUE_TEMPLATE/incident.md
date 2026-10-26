@@ -5,6 +5,7 @@ labels: incident
 ---
 ## Summary
 **Drill:** · **Severity:** · **Layer:** · **Date:**
+
 **MTTD** (break → first alert): · **MTTR** (break → service restored):
 
 ## Timeline (local time)

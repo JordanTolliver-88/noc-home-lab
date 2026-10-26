@@ -1,5 +1,6 @@
 ## Summary
 **Drill:** DRILL-01, server port in wrong VLAN · **Severity:** SEV-2 · **Layer:** 2 · **Date:** 2026-10-26
+
 **MTTD** (break → first alert): ~3 min (19:01:47 → 19:04:51) · **MTTR** (break → service restored): ~22 min (19:01:47 → 19:24:04)
 
 The planned fault was moving rpi4's port (SW1 Fa0/1) from VLAN 20 to VLAN 30. During the change, `no shutdown` was left off, so the port ended up in the wrong VLAN **and** administratively down. That made it a two-fault incident.
