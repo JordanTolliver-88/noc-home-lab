@@ -54,4 +54,4 @@ Prevention:
 - Syslog plus config backups answer "what changed and when" quickly.
 - Uptime Kuma detected the outage within a minute ("went offline 7:01 PM"), faster than LibreNMS, but it runs on the Pi, which was cut off. Its alerts couldn't reach Discord until the Pi came back, so they arrived as recoveries 22 minutes late. A monitor inside the failure can detect it but can't report it. Placement matters as much as speed.
 
-Runbook: runbooks/wrong-vlan.md (to be written)
+Runbook: [runbooks/port-down.md](../runbooks/port-down.md)
