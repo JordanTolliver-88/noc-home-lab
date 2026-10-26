@@ -58,6 +58,7 @@ interface FastEthernet0/2
  switchport access vlan 30
  switchport mode access
  switchport nonegotiate
+ shutdown
 !
 interface FastEthernet0/3
  description UNUSED
