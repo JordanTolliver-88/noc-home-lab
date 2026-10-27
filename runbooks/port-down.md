@@ -27,6 +27,9 @@ Then:
 - `show mac address-table interface <port>`: is the device's MAC learned, and in which VLAN?
 - `show vlan brief`: is the port listed under the correct VLAN?
 
+
+**If the port is connected, in the correct VLAN, and the device's MAC is learned, the access side is fine. Check the trunk next: [trunk-vlan.md](trunk-vlan.md).**
+
 ## 4. Find what changed
 - `sudo grep CONFIG_I /var/log/network/10.10.10.2.log | tail -5` (who changed config, when, from where)
 - `sudo grep "<port>" /var/log/network/10.10.10.2.log | tail -5` (when the port went down or up)

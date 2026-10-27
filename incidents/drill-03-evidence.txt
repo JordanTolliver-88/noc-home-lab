@@ -1,0 +1,3 @@
+## Switch syslog (SW1), config changes from 21:00, Oct 26
+2026-10-26T21:18:32.146354-04:00 10.10.10.2 155: .Oct 26 21:18:31.362 EDT: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.10.1)
+2026-10-26T21:25:44.013739-04:00 10.10.10.2 156: .Oct 26 21:25:43.230 EDT: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.10.1)
