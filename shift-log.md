@@ -191,6 +191,8 @@ Severity: **SEV-1** whole lab down · **SEV-2** a service or segment down · **S
 - The router, monitoring, and alerting all depend on one machine: a single point of failure. A watchdog outside the lab (an external heartbeat check, or Uptime Kuma pinging out to a service that alerts when the pings *stop*) would catch "everything is silent."
 - Runbook correction: with sticky port security, a MAC in the table doesn't prove the device is up. Use packet counters or ARP instead.
 
+**Addendum:** Uptime Kuma's history shows `Pi-hole admin: connect ENETUNREACH 10.10.20.10:80` at 10:02:23, exactly 12 hours after rpi4's last DHCP lease (22:02). With Ubuntu asleep, the DHCP server couldn't renew the lease, so rpi4's lease expired and it dropped its own IP address. It got a new lease after Ubuntu woke at 15:25 (Pi-hole admin back up at 15:30:23), which is why `ssh rpi4` at 15:28 failed with `No route to host`.
+
 **Lesson:** Silence isn't the same as healthy. The worst outage so far produced zero alerts, because the thing that sends alerts was part of the outage. I found it only because I tried to use the lab.
 
 ---
