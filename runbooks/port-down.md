@@ -25,6 +25,7 @@
 
 Then:
 - `show mac address-table interface <port>`: is the device's MAC learned, and in which VLAN?
+  - Caution: with sticky port security, the MAC shows as `STATIC` even if the device is off. Check `show interfaces <port> | include packets input` twice and confirm the count rises, or check `ip neigh` on Ubuntu.
 - `show vlan brief`: is the port listed under the correct VLAN?
 
 

@@ -166,6 +166,35 @@ Severity: **SEV-1** whole lab down · **SEV-2** a service or segment down · **S
 
 ---
 
+## INC-008 · Lab router suspended overnight; whole lab dark for 16 hours, no alerts
+**Date:** 2026-10-26 22:16 → 2026-10-27 15:25 · **Severity:** SEV-1 · **Layer:** 1 (host power management)
+
+**Symptom:** Next afternoon, `ssh rpi4` returned `No route to host` before any drill had started.
+
+**Investigation:**
+- Ubuntu side (15:29): USB NIC and all three VLAN interfaces UP; switch answered ping.
+- SW1 Fa0/1: `connected`, port security `Secure-up`, violation count 0, rpi4's MAC in the table, packet counters increasing. `ip neigh` showed rpi4 REACHABLE by 15:32.
+- The MAC table entry was `STATIC`: with sticky port security, the switch keeps the MAC even when the device is off, so it no longer proves the device is alive.
+- SW1 log: **Gi0/1 (trunk to Ubuntu) down 22:16–22:34 and 23:05 → 15:25 the next day.** The Pi's port never went down.
+- Ubuntu journal: `The system will suspend now!` at 22:16:03, NetworkManager deactivating `enx6c6e0755838c` with reason `sleeping`, resume at 22:34:50. Same pattern at 23:05.
+
+**Root cause:** Ubuntu's default automatic suspend put the lab router to sleep when the desktop sat idle. The USB trunk NIC went down with it.
+
+**Impact:** For about 16 hours the lab had no routing, NAT, DHCP, LibreNMS polling, syslog collection, or config backups. **No alerts fired.** LibreNMS was asleep, and Uptime Kuma on rpi4 couldn't reach Discord because its internet path also runs through Ubuntu.
+
+**Fix:** Disabled all sleep: `systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target`, and set GNOME automatic suspend to `nothing`.
+
+**Verification:** `systemctl is-enabled suspend.target` → `masked`; GNOME setting → `'nothing'`.
+
+**Prevention:**
+- Infrastructure hosts must never sleep. Check power settings on every new server.
+- The router, monitoring, and alerting all depend on one machine: a single point of failure. A watchdog outside the lab (an external heartbeat check, or Uptime Kuma pinging out to a service that alerts when the pings *stop*) would catch "everything is silent."
+- Runbook correction: with sticky port security, a MAC in the table doesn't prove the device is up. Use packet counters or ARP instead.
+
+**Lesson:** Silence isn't the same as healthy. The worst outage so far produced zero alerts, because the thing that sends alerts was part of the outage. I found it only because I tried to use the lab.
+
+---
+
 ## Minor issues
 - Several commands were typed at the wrong prompt (IOS commands at the Ubuntu prompt and the reverse). Habit: check the prompt (`SW1#` vs `jordan@...$` vs `jordan@rpi4`) before running anything.
 - Commands pasted together with `ssh` were swallowed while the session connected (the Pi-hole installer and chrony install didn't run). Habit: run session-opening commands alone, then paste the next step.
