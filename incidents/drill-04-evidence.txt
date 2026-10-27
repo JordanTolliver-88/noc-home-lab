@@ -1,0 +1,10 @@
+## Switch syslog (SW1), Fa0/1, port security and config changes from 21:40, Oct 26
+2026-10-26T21:53:22.773289-04:00 10.10.10.2 157: .Oct 26 21:53:21.991 EDT: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.10.1)
+2026-10-26T21:55:24.753110-04:00 10.10.10.2 158: .Oct 26 21:55:23.971 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+2026-10-26T21:55:24.816357-04:00 10.10.10.2 159: .Oct 26 21:55:25.028 EDT: %PM-4-ERR_DISABLE: psecure-violation error detected on Fa0/1, putting Fa0/1 in err-disable state
+2026-10-26T21:55:25.818163-04:00 10.10.10.2 160: .Oct 26 21:55:25.036 EDT: %PORT_SECURITY-2-PSECURE_VIOLATION: Security violation occurred, caused by MAC address 0200.0000.0001 on port FastEthernet0/1.
+2026-10-26T21:55:27.823131-04:00 10.10.10.2 161: .Oct 26 21:55:27.041 EDT: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to down
+2026-10-26T22:02:05.481506-04:00 10.10.10.2 162: .Oct 26 22:02:04.700 EDT: %LINK-5-CHANGED: Interface FastEthernet0/1, changed state to administratively down
+2026-10-26T22:02:11.035770-04:00 10.10.10.2 163: .Oct 26 22:02:10.254 EDT: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to up
+2026-10-26T22:02:11.036109-04:00 10.10.10.2 164: .Oct 26 22:02:11.260 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+2026-10-26T22:02:12.561772-04:00 10.10.10.2 165: .Oct 26 22:02:11.780 EDT: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.10.1)

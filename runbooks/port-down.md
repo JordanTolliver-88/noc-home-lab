@@ -21,7 +21,7 @@
 | `connected` + wrong VLAN | Misconfiguration | Step 5 |
 | `disabled` | Someone shut it down | Step 4, then Step 5 |
 | `notconnect` | No link: cable, NIC, or device powered off | Check the cable and device power |
-| `err-disabled` | Switch shut it (BPDU Guard, port security) | `show interfaces status err-disabled`, find the cause before re-enabling |
+| `err-disabled` | Switch shut it (BPDU Guard, port security) | Follow [err-disabled.md](err-disabled.md) |
 
 Then:
 - `show mac address-table interface <port>`: is the device's MAC learned, and in which VLAN?
