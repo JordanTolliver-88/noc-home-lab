@@ -11,7 +11,7 @@ A segmented, monitored network built on a Cisco Catalyst 2960 and Ubuntu, run li
 - [x] Phase 3: Core services (DNS, NTP, syslog, config backups)
 - [x] Phase 4: Monitoring and alerting (Grafana dashboard still to come)
 - [x] Phase 5: Incident drills (6 drills + 1 real incident)
-- [ ] Phase 6: Final write-up and walkthrough video
+- [x] Phase 6: Final write-up
 
 ## Hardware
 | Device | Role |
