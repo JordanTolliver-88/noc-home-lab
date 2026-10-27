@@ -1,0 +1,15 @@
+## Switch syslog (SW1), Fa0/1 and config changes, Oct 26 from 19:55
+2026-10-26T20:01:57.129879-04:00 10.10.10.2 141: .Oct 26 20:01:56.338 EDT: %CLEAR-5-COUNTERS: Clear counter on interface FastEthernet0/1 by admin on vty0 (10.10.10.1)
+2026-10-26T20:04:45.623429-04:00 10.10.10.2 142: .Oct 26 20:04:44.817 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+2026-10-26T20:04:46.609677-04:00 10.10.10.2 143: .Oct 26 20:04:45.815 EDT: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to down
+2026-10-26T20:04:48.612440-04:00 10.10.10.2 144: .Oct 26 20:04:47.820 EDT: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to up
+2026-10-26T20:04:48.612925-04:00 10.10.10.2 145: .Oct 26 20:04:48.827 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+2026-10-26T20:04:53.110970-04:00 10.10.10.2 146: .Oct 26 20:04:52.317 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+2026-10-26T20:04:54.576249-04:00 10.10.10.2 147: .Oct 26 20:04:53.785 EDT: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.10.1)
+2026-10-26T20:04:54.576608-04:00 10.10.10.2 148: .Oct 26 20:04:54.330 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+2026-10-26T20:40:06.864376-04:00 10.10.10.2 149: .Oct 26 20:40:06.073 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+2026-10-26T20:40:08.877960-04:00 10.10.10.2 150: .Oct 26 20:40:08.087 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+2026-10-26T20:40:11.148446-04:00 10.10.10.2 151: .Oct 26 20:40:10.360 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+2026-10-26T20:40:13.155831-04:00 10.10.10.2 152: .Oct 26 20:40:12.365 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+2026-10-26T20:40:13.156207-04:00 10.10.10.2 153: .Oct 26 20:40:12.952 EDT: %SYS-5-CONFIG_I: Configured from console by admin on vty0 (10.10.10.1)
+2026-10-26T20:40:35.651959-04:00 10.10.10.2 154: .Oct 26 20:40:34.863 EDT: %CLEAR-5-COUNTERS: Clear counter on interface FastEthernet0/1 by admin on vty0 (10.10.10.1)
