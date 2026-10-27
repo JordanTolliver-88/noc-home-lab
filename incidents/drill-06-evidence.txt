@@ -1,0 +1,5 @@
+## Switch syslog (SW1), Fa0/1 from 15:50, Oct 27
+2026-10-27T15:56:06.692739-04:00 10.10.10.2 182: .Oct 27 15:56:05.997 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+2026-10-27T15:56:07.697947-04:00 10.10.10.2 183: .Oct 27 15:56:06.996 EDT: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to down
+2026-10-27T16:05:48.429664-04:00 10.10.10.2 184: .Oct 27 16:05:47.730 EDT: %LINK-3-UPDOWN: Interface FastEthernet0/1, changed state to up
+2026-10-27T16:05:48.429999-04:00 10.10.10.2 185: .Oct 27 16:05:48.737 EDT: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
