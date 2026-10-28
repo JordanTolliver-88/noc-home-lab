@@ -52,6 +52,9 @@ interface FastEthernet0/1
  switchport access vlan 20
  switchport mode access
  switchport nonegotiate
+ switchport port-security
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 98fe.5463.e885 vlan access
 !
 interface FastEthernet0/2
  description LAPTOP-USERS
